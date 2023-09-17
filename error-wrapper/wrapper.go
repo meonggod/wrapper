@@ -30,6 +30,13 @@ func (e *ErrorWrapper) Error() string {
 	return e.definition.Error(e.args)
 }
 
+func (e *ErrorWrapper) Is(definition *ErrorDefinition) bool {
+	if e.definition == definition {
+		return true
+	}
+	return false
+}
+
 func (e *ErrorWrapper) StackTrace() string {
 	return e.stacktrace
 }
