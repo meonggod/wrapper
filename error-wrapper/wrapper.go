@@ -16,6 +16,9 @@ func New(definition *ErrorDefinition, err interface{}) *ErrorWrapper {
 	var msg string
 
 	_, file, no, ok := runtime.Caller(1)
+	if err == nil {
+		err = ""
+	}
 	if ok {
 		msg = fmt.Sprintf(`%s:%d => [%s] %s`, file, no, msg, err)
 	}
